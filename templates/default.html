@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel ="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header class="p-3 bg-dark text-white">
+    <div class="wrapper">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          Articles
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
+          <li><a href="/create" class="nav-link px-2 text-white">Create</a></li>
+        </ul>
+
+        <div class="text-end">
+          {% if user.is_authenticated %}
+              <button type="button" class="btn btn-danger me-2">
+                  <a href="{% url 'logout' %}">Log out</a>
+              </button>
+
+              {% else %}
+
+              <button type="button" class="btn btn-light me-2">
+                  <a href="{% url 'login' %}">Sign in</a>
+              </button>
+              <button type="button" class="btn btn-warning">
+                  <a href="{% url 'reg' %}">Sign up</a>
+              </button>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </header>
+    <main class="main">
+        {% block main %}{% endblock %}
+    </main>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+{% block scripts %}{% endblock %}
+</html>

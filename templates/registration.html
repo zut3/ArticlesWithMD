@@ -1,0 +1,12 @@
+{% extends 'default.html' %}
+
+{% block main %}
+    <div class="wrapper center">
+        <p class="fs-1">Sign up!</p>
+        <form method = "post" class="wrapper center">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success">Sign up</button>
+        </form>
+    </div>
+{% endblock %}

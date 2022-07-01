@@ -1,0 +1,22 @@
+{% extends 'default.html' %}
+
+{% block title %}Main page{% endblock %}
+
+{% block main %}
+    {% for el in articles %}
+        <div class="alert alert-primary">
+            <a href="/{{ el.id }}">
+                <h3>{{ el.title }}</h3>
+            </a>
+            <p class="fw-light">{{ el.created }}</p>
+        </div>
+    {% endfor %}
+    {% if user.is_authenticated %}
+        <h1>Hello, {{ user.username }}!</h1>
+    {% else %}
+        <h1>Hello, <strong>Anonymus</strong>!</h1>
+        <p>You probably need <a class="ref" href="{% url 'login' %}">Sign in.</a></p>
+    {% endif %}
+
+
+{% endblock %}

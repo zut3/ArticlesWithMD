@@ -1,0 +1,21 @@
+{% extends 'default.html' %}
+{% load markdownify %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block main %}
+    <div class="wrapper">
+        <h1 class="title">{{ article.title }}</h1>
+        <h2 class="author-name">By:
+            {% if user.username == article.author.username %}
+                <strong>You</strong>
+            {% else %}
+                {{ article.author }}
+            {% endif %}
+        </h2>
+        <div>
+            {{ article.text|markdownify }}
+        </div>
+    </div>
+    <footer><p class="fw-light">{{ article.created }}</p></footer>
+{% endblock %}

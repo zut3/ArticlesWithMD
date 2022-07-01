@@ -1,0 +1,18 @@
+{% extends 'default.html' %}
+{% load static %}
+{% block title %}Creating{% endblock %}
+
+{% block main %}
+    <div class="wrapper center">
+        <form  method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-success">Отправить</button>
+        </form>
+        <div id="preview" class="preview"></div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/translator.js' %}"></script>
+{% endblock %}
